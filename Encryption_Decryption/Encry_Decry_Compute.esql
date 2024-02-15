@@ -1,0 +1,27 @@
+
+
+CREATE COMPUTE MODULE Encry_Decry_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+	DECLARE ref REFERENCE TO InputRoot.JSON.Data.AccBalanceEnquiryReq;
+	DECLARE AccBalanceEnquiryReq CHARACTER CAST(ASBITSTREAM(ref CCSID InputRoot.Properties.CodedCharSetId) AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId ENCODING InputRoot.Properties.Encoding);
+	DECLARE encry,decry CHARACTER;
+	CALL Encryption (AccBalanceEnquiryReq,'abcde')INTO encry;
+	SET OutputRoot.JSON.Data.res.encrypt = encry;
+	CALL Decryption (encry,'abcde')INTO decry;
+	SET OutputRoot.JSON.Data.res.decrypt = decry;
+	
+	
+	
+		
+		RETURN TRUE;
+	END;
+END MODULE;
+CREATE PROCEDURE Encryption ( IN Data CHARACTER, IN Key CHARACTER) RETURNS CHARACTER
+LANGUAGE JAVA
+EXTERNAL NAME "encryptionDecryption.EncryptionDecryption.encrypt";
+
+CREATE PROCEDURE  Decryption ( IN Data CHARACTER, IN Key CHARACTER ) RETURNS CHARACTER
+LANGUAGE JAVA
+EXTERNAL NAME "encryptionDecryption.EncryptionDecryption.decrypt";
