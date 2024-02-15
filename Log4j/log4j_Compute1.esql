@@ -1,0 +1,50 @@
+
+
+CREATE COMPUTE MODULE log4j_Compute1
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		 CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+	DECLARE rc BOOLEAN;
+    CALL initLog4j('C:\log4j\Log4jConfigurationFile.xml') INTO rc;
+  
+    DECLARE rc2 BOOLEAN;
+    DECLARE type INTEGER;
+	DECLARE text CHARACTER;
+    DECLARE ref REFERENCE TO InputExceptionList.*[<];
+		WHILE ENDSWITH(FIELDNAME(ref),'Exception') DO			
+				SET type = ref.Insert[<].Type;
+				SET text = ref.Insert[<].Text;
+			MOVE ref LASTCHILD;
+		END WHILE;
+		DECLARE type1 CHARACTER CAST (type AS CHARACTER);
+	DECLARE Exceptions CHARACTER;
+	SET Exceptions=type1 ||','|| text;
+	CALL log4j (ApplicationLabel, 'dco_debug', 'DEBUG','Success' ) INTO rc2;
+	CALL log4j (ApplicationLabel, 'dco_info', 'INFO','Success' ) INTO rc2;
+	CALL log4j (ApplicationLabel, 'dco_error', 'ERROR',Exceptions ) INTO rc2;
+	END;
+END MODULE;
+    CREATE FUNCTION initLog4j( IN CONFIG_FILE_NAME CHARACTER )
+    RETURNS BOOLEAN
+    LANGUAGE JAVA
+    EXTERNAL NAME "com.ibm.broker.IAM3.Log4jNode.initLog4j";
+    
+    CREATE FUNCTION log4j( IN Comp_name CHARACTER,IN logger_Name CHARACTER,IN LEVEL CHARACTER,IN TEXT CHARACTER) 
+    RETURNS BOOLEAN
+    LANGUAGE JAVA
+    EXTERNAL NAME "com.ibm.broker.IAM3.Log4jNode.log"; 
