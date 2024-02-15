@@ -1,0 +1,51 @@
+
+CREATE COMPUTE MODULE throwing_exception_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		 CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+    CREATE PROCEDURE CopyEntireMessage() 	BEGIN	
+    	DECLARE sqlstate1 CHARACTER;
+    	DECLARE sqlcode1 INTEGER;
+    	DECLARE sqlerrortext1 CHARACTER;
+    	DECLARE i INTEGER 1;
+    	FOR source  AS  InputRoot.XMLNSC.emp_details[] DO
+    		DECLARE CONTINUE HANDLER FOR SQLSTATE LIKE '%'
+    		 BEGIN 
+    		SET sqlcode1=SQLCODE;
+    		SET sqlstate1=SQLSTATE;
+    		SET sqlerrortext1=SQLERRORTEXT;
+    	END;
+    	SET sqlcode1=SQLCODE;
+    	SET sqlstate1=SQLSTATE;
+    	SET sqlerrortext1=SQLERRORTEXT;
+  
+	INSERT INTO Database.{'ORADSN'}.{'DATABASE'}.{'EXCEPTION'} VALUES (source.ID,source.NAME,source.DESIGNATION );
+	
+	   IF sqlcode1=0 THEN
+	   	SET OutputRoot.XMLNSC.data.employee[1]='success';
+	   	SET OutputRoot.XMLNSC.data.employee[1]='source';
+	   	
+	   ELSE 
+	   	SET OutputRoot.XMLNSC.data.continue_handler='failed insertion';
+	   	SET OutputRoot.XMLNSC.data.employee[1]=source;
+	   	
+	   END IF; 
+	 SET i=i+1;
+	   END FOR;
+	END;
+END MODULE;
+
