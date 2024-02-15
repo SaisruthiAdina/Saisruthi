@@ -1,0 +1,46 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "OpenAPI",
+    "version": "1.0.0",
+    "description": "OpenAPI"
+  },
+  "servers": [
+    {
+      "url": "/openapi/v1"
+    }
+  ],
+  "paths": {
+    "/Add/{a}/{b}": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "a",
+            "allowReserved": false,
+            "schema": {
+              "title": "a",
+              "type": "integer"
+            },
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "b",
+            "in": "path",
+            "allowReserved": false,
+            "schema": {
+              "title": "b",
+              "type": "integer"
+            },
+            "required": true
+          }
+        ]
+      }
+    }
+  }
+}
