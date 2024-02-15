@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCallableFlowAsyncResponse.msgnode="ComIbmCallableFlowAsyncResponse.msgnode" xmlns:ComIbmGroupGather.msgnode="ComIbmGroupGather.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="Provider2.msgflow" nsPrefix="Provider2.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="Provider2" bundleName="Provider2" pluginId="GroupingNodes"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/GroupingNodes/icons/full/obj16/Provider2.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/GroupingNodes/icons/full/obj30/Provider2.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmCallableFlowAsyncResponse.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="96,102" asyncResponseCorrelator="Flight_Reservation">
+        <translation xmi:type="utility:ConstantString" string="Callable Flow Async Response"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCallableFlowAsyncResponse.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="103,203" asyncResponseCorrelator="Hotel_Reservation">
+        <translation xmi:type="utility:ConstantString" string="Callable Flow Async Response1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmGroupGather.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="398,150" GroupName="group" UnknownMessageTimeout="5.0">
+        <translation xmi:type="utility:ConstantString" string="Group Gather"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

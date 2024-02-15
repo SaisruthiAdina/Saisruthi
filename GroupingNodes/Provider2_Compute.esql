@@ -1,0 +1,30 @@
+
+
+CREATE COMPUTE MODULE Provider2_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		 CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot.XMLNSC.SBI.CustomerInfo.CustomerId  = '102356';
+		SET OutputRoot.XMLNSC.SBI.CustomerInfo.CustomerName  = 'Harshitha Reddy';
+		SET OutputRoot.XMLNSC.SBI.CustomerInfo.PhoneNumber  = '987456123';
+		SET OutputRoot.XMLNSC.SBI.CustomerInfo.Branch  = 'Kukatpally';
+		SET OutputRoot.XMLNSC.SBI.CustomerInfo.BranchCode  = '10250';
+		SET OutputRoot.XMLNSC.SBI.CustomerInfo.AccountType  = 'Salary Account';
+		SET OutputRoot.XMLNSC.SBI.CustomerInfo.AvailableBalance  = '20000';
+	END;
+END MODULE;

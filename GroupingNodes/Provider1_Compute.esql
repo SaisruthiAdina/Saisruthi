@@ -1,0 +1,33 @@
+
+
+CREATE COMPUTE MODULE Provider1_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		 CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		CREATE FIELD OutputRoot.JSON.Data.Hotel;
+		DECLARE Ref_OutFlight REFERENCE TO OutputRoot.JSON.Data.Hotel;
+		SET Ref_OutFlight.HotelName 			= 'Mehfil';
+		SET Ref_OutFlight.HotelAddress 			= 'JNTU';
+		SET Ref_OutFlight.City 					= 'Hyderabad';
+		SET Ref_OutFlight.State					= 'Telangana';
+		SET Ref_OutFlight.Pincode 				= '500087';
+		SET Ref_OutFlight.ContactNumber	 		= '8745962131';
+		SET Ref_OutFlight.AccombdationAvailable = 'Yes';
+	END;
+END MODULE;
+
