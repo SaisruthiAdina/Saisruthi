@@ -1,0 +1,51 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "DBLog_REST_Snakescount",
+    "version" : "1.0.0",
+    "description" : "DBLog_REST_Snakescount"
+  },
+  "paths" : {
+    "/getGamelength" : {
+      "get" : {
+        "operationId" : "getGetGamelength",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Retrieve getGamelength",
+        "parameters" : [ {
+          "name" : "Gamenumber",
+          "in" : "query",
+          "type" : "integer"
+        } ]
+      }
+    },
+    "/getGamenumber" : {
+      "get" : {
+        "operationId" : "getGetGamenumber",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Retrieve getGamenumber",
+        "parameters" : [ {
+          "name" : "Gamelength",
+          "in" : "query",
+          "type" : "integer"
+        } ]
+      }
+    }
+  },
+  "basePath" : "/dblog_rest_snakescount/v1"
+}

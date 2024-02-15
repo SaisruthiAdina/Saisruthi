@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:restapiDescriptor xmlns="http://com.ibm.etools.mft.descriptor.base" xmlns:ns2="http://com.ibm.etools.mft.descriptor.restapi" definitionType="swagger_20" definitionFile="swagger.json" implementation="gen/DBLog_REST_Snakescount.msgflow" https="false" definitionWithExtRef="false" faultFormat="JSON">
+    <ns2:operations>
+        <ns2:operation name="getGetGamelength" implementation="getGetGamelength.subflow"/>
+        <ns2:operation name="getGetGamenumber" implementation="getGetGamenumber.subflow"/>
+    </ns2:operations>
+    <ns2:errorHandlers>
+        <ns2:errorHandler type="CATCH" implementation="DBLog_REST_SnakescountInputCatchHandler.subflow"/>
+    </ns2:errorHandlers>
+</ns2:restapiDescriptor>
