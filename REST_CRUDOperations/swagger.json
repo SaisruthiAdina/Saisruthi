@@ -1,0 +1,87 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "REST_CRUDOperations",
+    "version" : "1.0.0",
+    "description" : "REST_CRUDOperations"
+  },
+  "paths" : {
+    "/Create" : {
+      "post" : {
+        "operationId" : "postCreate",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful."
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a Create",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "type" : "string"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        } ]
+      }
+    },
+    "/Retrieve" : {
+      "get" : {
+        "operationId" : "getRetrieve",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Retrieve Retrieve",
+        "parameters" : [ {
+          "name" : "Id",
+          "in" : "query",
+          "type" : "string"
+        } ]
+      }
+    },
+    "/Update" : {
+      "put" : {
+        "operationId" : "putUpdate",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful."
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Update Update",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "type" : "string"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        } ]
+      }
+    },
+    "/Delete" : {
+      "delete" : {
+        "operationId" : "deleteDelete",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful."
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Remove from Delete"
+      }
+    }
+  },
+  "basePath" : "/rest_crudoperations/v1"
+}

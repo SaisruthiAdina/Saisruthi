@@ -1,0 +1,28 @@
+
+
+CREATE COMPUTE MODULE putUpdate_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+	DECLARE id INTEGER InputRoot.JSON.Data.request.Id;
+	DECLARE Salary CHARACTER InputRoot.JSON.Data.request.Sal;
+	
+	UPDATE Database.EMP1 as i SET SAL =Salary where i.ID = id ;
+	SET OutputRoot.JSON.Data.res = 'record updated successfully';
+	END;
+END MODULE;
