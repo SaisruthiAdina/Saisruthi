@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:dfdlCobolFmt="http://www.ibm.com/dfdl/CobolDataDefinitionFormat" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+  <xsd:import namespace="http://www.ibm.com/dfdl/CobolDataDefinitionFormat" schemaLocation="IBMdefined/CobolDataDefinitionFormat.xsd"/>
+  <xsd:complexType name="MYRECORD">
+    <xsd:sequence>
+      <xsd:element default=" " dfdl:length="19" name="CLAIM_NUMBER">
+        <xsd:annotation>
+          <xsd:appinfo source="http://www.wsadie.com/appinfo">
+            <initialValue kind="SPACE"/>
+          </xsd:appinfo>
+          <xsd:documentation>PIC X(19) display</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PICX__string">
+            <xsd:maxLength value="19"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" dfdl:binaryDecimalVirtualPoint="0" dfdl:decimalSigned="yes" dfdl:length="4" name="ADMISSION_DATE">
+        <xsd:annotation>
+          <xsd:documentation>PIC S9(7) packedDecimal</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PICS9-Comp3__int">
+            <xsd:minInclusive value="-9999999"/>
+            <xsd:maxInclusive value="9999999"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" dfdl:length="4" name="FROM_DATE">
+        <xsd:annotation>
+          <xsd:documentation>PIC S9(7) packedDecimal</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PICS9-Comp3__int">
+            <xsd:minInclusive value="-9999999"/>
+            <xsd:maxInclusive value="9999999"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" dfdl:binaryDecimalVirtualPoint="0" dfdl:decimalSigned="yes" dfdl:length="4" name="THRU_DATE">
+        <xsd:annotation>
+          <xsd:documentation>PIC S9(7) packedDecimal</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PICS9-Comp3__int">
+            <xsd:minInclusive value="-9999999"/>
+            <xsd:maxInclusive value="9999999"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" dfdl:binaryDecimalVirtualPoint="0" dfdl:decimalSigned="yes" dfdl:length="4" name="DISCHARGE_DATE">
+        <xsd:annotation>
+          <xsd:documentation>PIC S9(7) packedDecimal</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PICS9-Comp3__int">
+            <xsd:minInclusive value="-9999999"/>
+            <xsd:maxInclusive value="9999999"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" dfdl:binaryDecimalVirtualPoint="0" dfdl:decimalSigned="yes" dfdl:length="3" name="FULL_DAYS">
+        <xsd:annotation>
+          <xsd:documentation>PIC S9(5) packedDecimal</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PICS9-Comp3__int">
+            <xsd:minInclusive value="-99999"/>
+            <xsd:maxInclusive value="99999"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" name="COINSURANCE_DAYS">
+        <xsd:annotation>
+          <xsd:documentation>PIC 9(4) binary</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PIC9-Comp__short">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="9999"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" name="LIFETIME_RES_DAYS">
+        <xsd:annotation>
+          <xsd:documentation>PIC 9(6) binary</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PIC9-Comp__int">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="999999"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" name="INTERMEDIARY_NUM">
+        <xsd:annotation>
+          <xsd:documentation>PIC 9(10) binary</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PIC9-Comp__long">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="9999999999"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default=" " dfdl:length="13" name="PROVIDER">
+        <xsd:annotation>
+          <xsd:appinfo source="http://www.wsadie.com/appinfo">
+            <initialValue kind="SPACE"/>
+          </xsd:appinfo>
+          <xsd:documentation>PIC X(13) display</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PICX__string">
+            <xsd:maxLength value="13"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" dfdl:binaryDecimalVirtualPoint="2" dfdl:decimalSigned="yes" dfdl:length="4" name="INPATIENT_DED">
+        <xsd:annotation>
+          <xsd:documentation>PIC S9(4)V9(2) packedDecimal</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PIC9-Comp3__decimal">
+            <xsd:minInclusive value="-9999.99"/>
+            <xsd:maxInclusive value="9999.99"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" dfdl:binaryDecimalVirtualPoint="2" dfdl:decimalSigned="yes" dfdl:length="4" name="BLOOD_DED">
+        <xsd:annotation>
+          <xsd:documentation>PIC S9(4)V9(2) packedDecimal</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PIC9-Comp3__decimal">
+            <xsd:minInclusive value="-9999.99"/>
+            <xsd:maxInclusive value="9999.99"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" dfdl:decimalSigned="yes" dfdl:length="9" dfdl:textNumberPattern="+0000000V00" name="TOTAL_CHARGES">
+        <xsd:annotation>
+          <xsd:documentation>PIC S9(7)V9(2) display</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PIC9-Display-Zoned__decimal">
+            <xsd:minInclusive value="-9999999.99"/>
+            <xsd:maxInclusive value="9999999.99"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default=" " dfdl:length="2" name="PATIENT_STATUS">
+        <xsd:annotation>
+          <xsd:appinfo source="http://www.wsadie.com/appinfo">
+            <initialValue kind="SPACE"/>
+          </xsd:appinfo>
+          <xsd:documentation>PIC X(2) display</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PICX__string">
+            <xsd:maxLength value="2"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" name="BLOOD_PINTS_FURNISHED">
+        <xsd:annotation>
+          <xsd:documentation>PIC 9(5) binary</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PIC9-Comp__int">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="99999"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" name="BLOOD_PINTS_REPLACED">
+        <xsd:annotation>
+          <xsd:documentation>PIC 9(4) binary</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PIC9-Comp__short">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="9999"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" name="SEQUENCE_COUNTER">
+        <xsd:annotation>
+          <xsd:documentation>PIC 9(3) binary</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PIC9-Comp__short">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="999"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" dfdl:decimalSigned="no" dfdl:length="1" dfdl:textNumberPattern="0+" name="TRANSACTION_IND">
+        <xsd:annotation>
+          <xsd:documentation>PIC 9 display</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PIC9-Display-Zoned__short">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="9"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" dfdl:decimalSigned="no" dfdl:length="1" dfdl:textNumberPattern="0+" name="BILL_SOURCE">
+        <xsd:annotation>
+          <xsd:documentation>PIC 9 display</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PIC9-Display-Zoned__short">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="9"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" dfdl:decimalSigned="no" dfdl:length="1" dfdl:textNumberPattern="0+" name="BENEFITS_EXHAUST_IND">
+        <xsd:annotation>
+          <xsd:documentation>PIC 9 display</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PIC9-Display-Zoned__short">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="9"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="0" dfdl:decimalSigned="no" dfdl:length="1" dfdl:textNumberPattern="0+" name="BENEFITS_PAY_IND">
+        <xsd:annotation>
+          <xsd:documentation>PIC 9 display</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PIC9-Display-Zoned__short">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="9"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default=" " dfdl:length="1" name="AUTO_ADJUSTMENT_IND">
+        <xsd:annotation>
+          <xsd:appinfo source="http://www.wsadie.com/appinfo">
+            <initialValue kind="SPACE"/>
+          </xsd:appinfo>
+          <xsd:documentation>PIC X display</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PICX__string">
+            <xsd:maxLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default=" " dfdl:length="23" name="INTERMEDIARY_CTRL_NUM">
+        <xsd:annotation>
+          <xsd:appinfo source="http://www.wsadie.com/appinfo">
+            <initialValue kind="SPACE"/>
+          </xsd:appinfo>
+          <xsd:documentation>PIC X(23) display</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PICX__string">
+            <xsd:maxLength value="23"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:annotation>
+    <xsd:appinfo source="http://www.ogf.org/dfdl/">
+      <dfdl:format binaryFloatRep="{$dfdl:binaryFloatRep}" byteOrder="{$dfdl:byteOrder}" encoding="{$dfdl:encoding}" ignoreCase="yes" leadingSkip="0" occursCountKind="fixed" ref="dfdlCobolFmt:CobolDataFormat" textNumberPadCharacter="0" textStringJustification="left" textStringPadCharacter="%SP;" textZonedSignStyle="asciiStandard" trailingSkip="0"/>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <xsd:annotation>
+    <xsd:documentation>
+	This XSD was created by importing COBOL copybook.
+
+	Source file:	cobol.cpy
+
+	Import options:
+		CODEPAGE=ISO-8859-1
+		ENDIAN=Little
+		EXTENSION_CBL=FP
+		EXTENSION_CCP=FP
+		EXTENSION_COB=FP
+		EXTENSION_CPY=DS
+		EXT_DECIMAL_SIGN=ASCII
+		FLOATING_POINT_FORMAT=0
+		NSYMBOL=NATIONAL
+		NUMPROC=PFD
+		PLATFORM_SELECTION=0
+		QUOTE=DOUBLE
+		REMOTE_ENDIAN=Little
+		TRUNC=STD
+		SCHEMA_TARGET_NAMESPACE_URI=null
+		CREATE_DEFAULT_VALUES_FROM_INITIAL_VALUES=true
+		CREATE_FACETS_FROM_LEVEL_88_VALUE_CLAUSES=false
+		PRESERVE_CASE_IN_VARIABLE_NAMES=true
+		CREATE_NULL_VALUES_FOR_FIELDS=false
+		NULL_CHARACTER_FOR_STRING=%SP; 
+		NULL_CHARACTER_FOR_NUMBER=%#r00; 
+		STRING_PADDING_CHARACTER=%SP;
+		NUMBER_PADDING_CHARACTER=0
+		DEFAULT_FOR_STRING= 
+		DEFAULT_FOR_NUMBER=0
+
+</xsd:documentation>
+  </xsd:annotation>
+  <xsd:element dfdl:lengthKind="implicit" ibmSchExtn:docRoot="true" name="MYRECORD" type="MYRECORD"/>
+</xsd:schema>
