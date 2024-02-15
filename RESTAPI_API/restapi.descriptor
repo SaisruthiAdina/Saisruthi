@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:restapiDescriptor xmlns="http://com.ibm.etools.mft.descriptor.base" xmlns:ns2="http://com.ibm.etools.mft.descriptor.restapi" definitionType="swagger_20" definitionFile="swagger.json" implementation="gen/RESTAPI_API.msgflow" https="false" definitionWithExtRef="false" faultFormat="JSON">
+    <ns2:operations>
+        <ns2:operation name="deleteDeletedata" implementation="deleteDeletedata.subflow"/>
+        <ns2:operation name="getGetID" implementation="getGetID.subflow"/>
+        <ns2:operation name="postPostdata" implementation="postPostdata.subflow"/>
+        <ns2:operation name="putPut" implementation="putPut.subflow"/>
+    </ns2:operations>
+    <ns2:errorHandlers/>
+</ns2:restapiDescriptor>

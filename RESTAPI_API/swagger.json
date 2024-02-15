@@ -1,0 +1,112 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "RESTAPI_API",
+    "version" : "1.0.0",
+    "description" : "RESTAPI_API"
+  },
+  "paths" : {
+    "/getID" : {
+      "get" : {
+        "operationId" : "getGetID",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "type" : "integer"
+            }
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Retrieve getID",
+        "parameters" : [ {
+          "name" : "EMPID",
+          "in" : "query",
+          "type" : "integer"
+        } ]
+      }
+    },
+    "/put" : {
+      "put" : {
+        "operationId" : "putPut",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful."
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Update put",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "type" : "string"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        } ]
+      }
+    },
+    "/deletedata" : {
+      "delete" : {
+        "operationId" : "deleteDeletedata",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful."
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Remove from deletedata"
+      }
+    },
+    "/postdata/{ID}/{NAME}/{BREED}/{DOB}/{AGE}" : {
+      "post" : {
+        "operationId" : "postPostdata",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful."
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a postdata",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "type" : "string"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "required" : true,
+          "name" : "ID",
+          "in" : "path",
+          "type" : "number"
+        }, {
+          "required" : true,
+          "name" : "NAME",
+          "in" : "path",
+          "type" : "string"
+        }, {
+          "required" : true,
+          "name" : "BREED",
+          "in" : "path",
+          "type" : "string"
+        }, {
+          "required" : true,
+          "name" : "DOB",
+          "in" : "path",
+          "type" : "string"
+        }, {
+          "required" : true,
+          "name" : "AGE",
+          "in" : "path",
+          "type" : "number"
+        } ]
+      }
+    }
+  },
+  "basePath" : "/restapi_api/v1"
+}
