@@ -1,0 +1,51 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "REST_Errorlog_snakescount",
+    "version" : "1.0.0",
+    "description" : "REST_Errorlog_snakescount"
+  },
+  "paths" : {
+    "/getGamelength" : {
+      "get" : {
+        "operationId" : "getGetGamelength",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Retrieve getGamelength",
+        "parameters" : [ {
+          "name" : "Gamenumber",
+          "in" : "query",
+          "type" : "boolean"
+        } ]
+      }
+    },
+    "/getGamenumber" : {
+      "get" : {
+        "operationId" : "getGetGamenumber",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Retrieve getGamenumber",
+        "parameters" : [ {
+          "name" : "Gamelength",
+          "in" : "query",
+          "type" : "integer"
+        } ]
+      }
+    }
+  },
+  "basePath" : "/rest_errorlog_snakescount/v1"
+}
