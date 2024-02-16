@@ -1,0 +1,71 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "Students_management",
+    "version" : "1.0.0",
+    "description" : "Students_management"
+  },
+  "paths" : {
+    "/verification" : {
+      "post" : {
+        "operationId" : "postVerification",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful."
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a verification",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "type" : "string"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "S_ID",
+          "in" : "query",
+          "type" : "string"
+        }, {
+          "name" : "PASSWORD_1",
+          "in" : "query",
+          "type" : "string"
+        } ]
+      }
+    },
+    "/getting" : {
+      "post" : {
+        "operationId" : "postGetting",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful."
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a getting",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "type" : "string"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "S_ID",
+          "in" : "query",
+          "type" : "string"
+        }, {
+          "name" : "PASSWORD_1",
+          "in" : "query",
+          "type" : "string"
+        } ]
+      }
+    }
+  },
+  "basePath" : "/students_management/v1"
+}
