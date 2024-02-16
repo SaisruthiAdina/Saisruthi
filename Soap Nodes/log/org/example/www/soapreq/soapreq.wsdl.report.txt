@@ -1,0 +1,25 @@
+
+
+Importing file: C:\IIB-2\Soap Nodes\soapreq.wsdl
+
+The WSDL import will proceed with bindings soapreqSOAP.
+Creating wsdl schema document for file:///C:/IIB-2/Soap Nodes/soapreq.wsdl.
+Parsing wsdl binding {http://www.example.org/soapreq/}soapreqSOAP.
+Parsing wsdl binding input Addition.
+Parsing wsdl binding output Addition.
+Parsing wsdl binding input Subtraction.
+Parsing wsdl binding output Subtraction.
+Processing doc style for operation Addition.
+Processing doc style for operation Subtraction.
+Populating WSDL schema soapreq.xsd.
+Creating file soapreq.xsd in the workspace.
+Creating file soapreq_InlineSchema1.xsd in the workspace.
+Copying source WSDL soapreq.wsdl to soapreq.wsdl.
+
+Elapsed time processing this message definition file: 0.441 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

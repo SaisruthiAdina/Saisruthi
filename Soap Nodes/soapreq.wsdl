@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="soapreq" targetNamespace="http://www.example.org/soapreq/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/soapreq/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="soapreq_InlineSchema1.xsd"/>
+        <binding hasEncoding="false" imported="true" name="soapreqSOAP" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    
+          <xsd:schema targetNamespace="http://www.example.org/soapreq/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:include schemaLocation="soapreq_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="AdditionRequest">
+    <wsdl:part element="tns:Addition" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="AdditionResponse">
+    <wsdl:part element="tns:AdditionResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="SubtractionRequest">
+  	<wsdl:part element="tns:Subtraction" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="SubtractionResponse">
+  	<wsdl:part element="tns:SubtractionResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="soapreq">
+    <wsdl:operation name="Addition">
+      <wsdl:input message="tns:AdditionRequest"/>
+      <wsdl:output message="tns:AdditionResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="Subtraction">
+    	<wsdl:input message="tns:SubtractionRequest"/>
+    	<wsdl:output message="tns:SubtractionResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="soapreqSOAP" type="tns:soapreq">
+  	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  	<wsdl:operation name="Addition">
+  		<soap:operation soapAction="http://www.example.org/soapreq/Addition"/>
+  		<wsdl:input>
+  			<soap:body use="literal"/>
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal"/>
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="Subtraction">
+  		<soap:operation soapAction="http://www.example.org/soapreq/Subtraction"/>
+  		<wsdl:input>
+  			<soap:body use="literal"/>
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal"/>
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="soapreq">
+    <wsdl:port binding="tns:soapreqSOAP" name="soapreqSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
