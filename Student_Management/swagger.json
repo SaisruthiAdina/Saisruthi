@@ -1,0 +1,10 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "Student_management",
+    "version" : "1.0.0",
+    "description" : "Student_management"
+  },
+  "paths" : { },
+  "basePath" : "/student_management/v1"
+}
