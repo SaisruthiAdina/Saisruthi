@@ -1,0 +1,32 @@
+
+
+CREATE COMPUTE MODULE snakes_count_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		 CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		DECLARE ref REFERENCE TO InputRoot.DFDL.snakes_count.record;
+		DECLARE I INT 1;
+	    WHILE LASTMOVE(ref) DO   
+		SET OutputRoot.XMLNSC.res = ref;
+		propagate to TERMINAL 'out';
+		INSERT INTO Database.snakes_count VALUES (ref.Gamenumber,ref.Gamelength); 	
+		SET I=I+1;
+		MOVE ref NEXTSIBLING;
+		END WHILE;	
+	END;
+END MODULE;
