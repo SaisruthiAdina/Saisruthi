@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Dblogsnakescount" targetNamespace="http://www.example.org/Dblogsnakescount/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/Dblogsnakescount/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="Dblogsnakescount_InlineSchema1.xsd"/>
+        <binding hasEncoding="false" imported="true" name="DblogsnakescountSOAP" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    
+          <xsd:schema targetNamespace="http://www.example.org/Dblogsnakescount/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:include schemaLocation="Dblogsnakescount_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="GamenumberRequest">
+    <wsdl:part element="tns:Gamenumber" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GamenumberResponse">
+    <wsdl:part element="tns:GamenumberResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GamelengthRequest">
+  	<wsdl:part element="tns:Gamelength" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GamelengthResponse">
+  	<wsdl:part element="tns:GamelengthResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="Dblogsnakescount">
+    <wsdl:operation name="Gamenumber">
+      <wsdl:input message="tns:GamenumberRequest"/>
+      <wsdl:output message="tns:GamenumberResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="Gamelength">
+    	<wsdl:input message="tns:GamelengthRequest"/>
+    	<wsdl:output message="tns:GamelengthResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DblogsnakescountSOAP" type="tns:Dblogsnakescount">
+  	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  	<wsdl:operation name="Gamenumber">
+  		<soap:operation soapAction="http://www.example.org/Dblogsnakescount/Gamenumber"/>
+  		<wsdl:input>
+  			<soap:body use="literal"/>
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal"/>
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="Gamelength">
+  		<soap:operation soapAction="http://www.example.org/Dblogsnakescount/Gamelength"/>
+  		<wsdl:input>
+  			<soap:body use="literal"/>
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal"/>
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Dblogsnakescount">
+    <wsdl:port binding="tns:DblogsnakescountSOAP" name="DblogsnakescountSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
