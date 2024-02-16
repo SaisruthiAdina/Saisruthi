@@ -1,0 +1,25 @@
+
+
+Importing file: C:\IIB-2\Soap_with_snakescount\snakescount.wsdl
+
+The WSDL import will proceed with bindings snakescountSOAP.
+Creating wsdl schema document for file:///C:/IIB-2/Soap_with_snakescount/snakescount.wsdl.
+Parsing wsdl binding {http://www.example.org/snakescount/}snakescountSOAP.
+Parsing wsdl binding input Gamenumber.
+Parsing wsdl binding output Gamenumber.
+Parsing wsdl binding input Gamelength.
+Parsing wsdl binding output Gamelength.
+Processing doc style for operation Gamenumber.
+Processing doc style for operation Gamelength.
+Populating WSDL schema snakescount.xsd.
+Creating file snakescount.xsd in the workspace.
+Creating file snakescount_InlineSchema1.xsd in the workspace.
+Copying source WSDL snakescount.wsdl to snakescount.wsdl.
+
+Elapsed time processing this message definition file: 0.489 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+
