@@ -1,0 +1,51 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "snkaes_count",
+    "version" : "1.0.0",
+    "description" : "snkaes_count"
+  },
+  "paths" : {
+    "/Gamenumber" : {
+      "get" : {
+        "operationId" : "getGamenumber",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Retrieve Gamenumber",
+        "parameters" : [ {
+          "name" : "Gamenumber",
+          "in" : "query",
+          "type" : "number"
+        } ]
+      }
+    },
+    "/Gamelength" : {
+      "get" : {
+        "operationId" : "getGamelength",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Retrieve Gamelength",
+        "parameters" : [ {
+          "name" : "Gamelength",
+          "in" : "query",
+          "type" : "number"
+        } ]
+      }
+    }
+  },
+  "basePath" : "/snkaes_count/v1"
+}
