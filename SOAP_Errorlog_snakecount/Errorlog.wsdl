@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Errorlog" targetNamespace="http://www.example.org/Errorlog/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/Errorlog/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="Errorlog_InlineSchema1.xsd"/>
+        <binding hasEncoding="false" imported="true" name="ErrorlogSOAP" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    
+          <xsd:schema targetNamespace="http://www.example.org/Errorlog/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:include schemaLocation="Errorlog_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="GamenumberRequest">
+    <wsdl:part element="tns:Gamenumber" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GamenumberResponse">
+    <wsdl:part element="tns:GamenumberResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GamelengthRequest">
+  	<wsdl:part element="tns:Gamelength" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GamelengthResponse">
+  	<wsdl:part element="tns:GamelengthResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="Errorlog">
+    <wsdl:operation name="Gamenumber">
+      <wsdl:input message="tns:GamenumberRequest"/>
+      <wsdl:output message="tns:GamenumberResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="Gamelength">
+    	<wsdl:input message="tns:GamelengthRequest"/>
+    	<wsdl:output message="tns:GamelengthResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ErrorlogSOAP" type="tns:Errorlog">
+  	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  	<wsdl:operation name="Gamenumber">
+  		<soap:operation soapAction="http://www.example.org/Errorlog/Gamenumber"/>
+  		<wsdl:input>
+  			<soap:body use="literal"/>
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal"/>
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="Gamelength">
+  		<soap:operation soapAction="http://www.example.org/Errorlog/Gamelength"/>
+  		<wsdl:input>
+  			<soap:body use="literal"/>
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal"/>
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Errorlog">
+    <wsdl:port binding="tns:ErrorlogSOAP" name="ErrorlogSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

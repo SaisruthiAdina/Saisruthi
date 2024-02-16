@@ -1,0 +1,25 @@
+
+
+Importing file: C:\IIB-2\SOAP_Errorlog_snakecount\Errorlog.wsdl
+
+The WSDL import will proceed with bindings ErrorlogSOAP.
+Creating wsdl schema document for file:///C:/IIB-2/SOAP_Errorlog_snakecount/Errorlog.wsdl.
+Parsing wsdl binding {http://www.example.org/Errorlog/}ErrorlogSOAP.
+Parsing wsdl binding input Gamenumber.
+Parsing wsdl binding output Gamenumber.
+Parsing wsdl binding input Gamelength.
+Parsing wsdl binding output Gamelength.
+Processing doc style for operation Gamenumber.
+Processing doc style for operation Gamelength.
+Populating WSDL schema Errorlog.xsd.
+Creating file Errorlog.xsd in the workspace.
+Creating file Errorlog_InlineSchema1.xsd in the workspace.
+Copying source WSDL Errorlog.wsdl to Errorlog.wsdl.
+
+Elapsed time processing this message definition file: 0.68 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

@@ -1,0 +1,51 @@
+DECLARE ns6 NAMESPACE 'http://www.example.org/Errorlog/';
+
+
+CREATE COMPUTE MODULE Errorlog_snakecount_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		 CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET Environment.msg = InputLocalEnvironment.Destination.SOAP.Reply.ReplyIdentifier;
+		DECLARE msg_id CHARACTER CAST(Environment.msg AS CHARACTER );
+		SET Environment.ipadd = InputRoot.HTTPInputHeader."X-Server-Name";
+		
+		DECLARE ref REFERENCE TO InputRoot.SOAP;
+		DECLARE Request BLOB ASBITSTREAM(ref ENCODING InputRoot.Properties.Encoding CCSID InputRoot.Properties.CodedCharSetId);
+		DECLARE channelreq,hostreq CHARACTER CAST(Request AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+		DECLARE TIME_STAMP CHARACTER CURRENT_TIMESTAMP;
+		
+		Declare rowdetails row;
+		IF InputRoot.SOAP.Context.operation = 'Gamenumber'  THEN
+		DECLARE query CHARACTER 'select * from SNAKES_COUNT where Gamenumber= ?';
+		SET rowdetails.res[] = PASSTHRU(query VALUES(InputRoot.SOAP.Body.ns6:Gamenumber.Gamenumber));
+		SET OutputRoot.SOAP.Body.ns6:GamenumberResponse.out = rowdetails.res;
+		ELSEIF
+			InputRoot.SOAP.Context.operation = 'Gamelength'  THEN
+		    DECLARE query1 CHARACTER 'select * from SNAKES_COUNT where Gamelength= ?';
+		    SET rowdetails.res[] = PASSTHRU(query1 VALUES(InputRoot.SOAP.Body.ns6:Gamelength.Gamelength));
+		    SET OutputRoot.SOAP.Body.ns6:GamelengthResponse.out = rowdetails.res;
+		END IF;
+		
+		DECLARE Response BLOB ASBITSTREAM(OutputRoot.SOAP ENCODING InputRoot.Properties.Encoding CCSID InputRoot.Properties.CodedCharSetId);
+		DECLARE channelres,hostres CHARACTER CAST(Response AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+		CALL snakelog(msg_id,channelreq,hostreq,hostres,channelres,ApplicationLabel,MessageFlowLabel,Environment.ipadd,TIME_STAMP);
+	END;
+END MODULE;
+CREATE PROCEDURE snakelog (IN MSG_ID CHARACTER, IN CHANNELREQ CHARACTER, IN HOSTREQ CHARACTER, IN HOSTRES CHARACTER,IN CHANNELRES CHARACTER,IN APPLICATION_NAME CHARACTER, IN MESSAGEFLOW CHARACTER,IN IP_ADD CHARACTER, IN TIMESTAMP_1 CHARACTER )
+LANGUAGE DATABASE
+EXTERNAL NAME "DB_LOGSPROCEDURE";
