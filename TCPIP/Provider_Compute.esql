@@ -1,0 +1,13 @@
+
+
+CREATE COMPUTE MODULE Provider_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE a,b,c INTEGER;
+		SET a = InputRoot.XMLNSC.root.a;
+		SET b = InputRoot.XMLNSC.root.b;
+		SET c = a + b;
+		SET OutputRoot.JSON.Data.c = c;
+	END;
+END MODULE;
+
