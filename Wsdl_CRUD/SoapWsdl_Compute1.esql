@@ -1,0 +1,56 @@
+
+
+CREATE COMPUTE MODULE SoapWsdl_Compute1
+	declare var shared row;
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		 CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		DECLARE tableName CHAR InputRoot.SOAP.Body.ns:create.TableName;
+		DECLARE nocol INT InputRoot.SOAP.Body.ns:create.No_Of_Columns;
+		DECLARE columns CHAR InputRoot.SOAP.Body.ns:create.Column_Names;
+		DECLARE dataType CHAR InputRoot.SOAP.Body.ns:create.DataTypes;
+		DECLARE i,j INT 1;
+		WHILE nocol >= i DO
+			--DECLARE col||i CHAR;
+			SET Environment.Variable.Column[i].Name = SUBSTRING(columns BEFORE ',');
+			SET Environment.Variable.Column[j].DataType = SUBSTRING(dataType BEFORE ',');
+			IF i > 3 THEN
+				SET Environment.Variable.Column[i].Name = columns;
+				SET Environment.Variable.Column[j].DataType = dataType;
+			END IF;
+			SET columns = SUBSTRING(columns AFTER ',');
+			SET dataType = SUBSTRING(dataType AFTER ',');
+		
+		SET j = j +1;
+		SET i = i+1;
+		END WHILE;
+		
+		DECLARE VAR1 CHARACTER 'CREATE TABLE '||tableName||' (
+		'||Environment.Variable.Column[1].Name||' '||Environment.Variable.Column[1].DataType||',
+		'||Environment.Variable.Column[2].Name||' '||Environment.Variable.Column[2].DataType||',
+		'||Environment.Variable.Column[3].Name||' '||Environment.Variable.Column[3].DataType||',
+		'||Environment.Variable.Column[4].Name||' '||Environment.Variable.Column[4].DataType||'
+		)';
+		--SET VAR=REPLACE(VAR1,'\n\t\t','');
+		set var.val[]=PASSTHRU(VAR1 TO Database.ORADSN);
+		
+			SET OutputRoot.SOAP.Body.ns:createResponse.Status='Table created successfully';
+			SET OutputRoot.SOAP.Body.ns:createResponse.status_code='200';
+	
+	END;
+END MODULE;

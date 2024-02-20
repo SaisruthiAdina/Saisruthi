@@ -1,0 +1,34 @@
+
+
+CREATE COMPUTE MODULE SoapWsdl_Compute3
+	DECLARE R1 SHARED ROW;
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		 CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		declare r2 character InputRoot.SOAP.Body.ns:Retrieve.Table_Name;
+		declare r4 character InputRoot.SOAP.Body.ns:Retrieve.Query;
+		declare r3 character 'SELECT '||r4||' FROM  '||r2||'' ;
+		set R1.data[]=PASSTHRU(r3);
+		set OutputRoot.SOAP.Body.ns:RetrieveResponse.Status='Retrieving successfully';
+		declare i int 1;
+		for s as R1.data[]  do
+		SET OutputRoot.SOAP.Body.ns:RetrieveResponse.Record[i]=R1.data[i];
+	 set i=i+1;
+		end for;
+	END;
+END MODULE;
